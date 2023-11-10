@@ -15,4 +15,7 @@
 #include <errno.h>
 #include <fcntl.h>
 
+extern char **samshell_env;
+
+
 #endif

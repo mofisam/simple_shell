@@ -63,7 +63,7 @@ char *_getenv(const char *name)
 
 	for (i = 0; samshell_env[i]; i++)
 	{
-		result = _PATHstrcmp(name, samshell_env[i]);
+		result = _S_PATHstrcmp(name, samshell_env[i]);
 		if (result == 0)
 		{
 			return (samshell_env[i]);
