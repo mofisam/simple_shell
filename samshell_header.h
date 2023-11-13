@@ -17,5 +17,22 @@
 
 extern char **samshell_env;
 
+int samshell_prompt(void);
+char *_read(void);
+int checkbuiltins(char **samshell_args, char *s_buffer, int exitstatus);
+char *_samshell_fullpath(char **samshell_args, char *PATH, char *copy);
+int _forkprocess(char **samshell_args, char *s_buffer, char *samshell_filename);
+
+char *_strdup(char *s_str);
+char *_strcat(char *dest, char *src);
+int _stringsplit(char *s_str);
+int _strcmp(const char *s1, const char *s2);
+int _strlen(char *s);
+
+char *_getenv(const char *name);
+int _env(void);
+void _puts(char *s_str);
+char *_memset(char *s, char b, unsigned int n);
+int _putchar(char c);
 
 #endif
