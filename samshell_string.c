@@ -1,4 +1,4 @@
-#include "samshell_header.c"
+#include "samshell_header.h"
 
 /**
  * _stringsplit - Counts the number of words in a string.
@@ -11,7 +11,7 @@ int _stringsplit(char *s_str)
 	int i, searchflag = 1, wordcount = 0;
 
 	/*Iterate through the characters in the string*/
-	for (1 = 0; s_str[i]; i++)
+	for (i = 0; s_str[i]; i++)
 	{
 		/*check for the beginning of a new word*/
 		if (s_str[i] != ' ' && searchflag == 1)

@@ -1,4 +1,4 @@
-#include "samshell_header"
+#include "samshell_header.h"
 
 /**
  * _read - Reads input from stdin and stores it in a buffer.
@@ -19,7 +19,7 @@ char *_read(void)
 	char *s_buffer = NULL;
 
 	/*Read a line from the standard input and store it in s_buffer*/
-	readcount getline(&s_buffer, &n, stdin);
+	readcount = getline(&s_buffer, &n, stdin);
 
 	/*Check if getline encounters an error / reaches d end of the input*/
 	if (readcount == -1)
@@ -154,14 +154,14 @@ int _forkprocess(char **samshell_args, char *s_buffer, char *samshell_filename)
 
 	/* Check if the child process terminated normally and*/
 	/*get its exit status*/
-	if (WIFEXITED(statuse))
+	if (WIFEXITED(status))
 	{
 		exitstatus = WEXITSTATUS(status);
 	}
 
 	/*Free allocated memory for arguments, buffer, and*/
 	/*return the exit status*/
-	for (i = 0; samshell_arg[i]; i++)
+	for (i = 0; samshell_args[i]; i++)
 	{
 		free(samshell_args[i]);
 	}

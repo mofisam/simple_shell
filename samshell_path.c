@@ -55,3 +55,30 @@ char *_samshell_fullpath(char **samshell_args, char *PATH, char *copy)
 	free(copy);/*Free allocated memory for the copied PATH*/
 	return (samshell_filename);
 }
+
+/**
+ * _concat - Concatenates a user string with a PATH member string
+ *           and a '/' character.
+ * @tmp: Static array to store the concatenated string.
+ * @samshell_args: Pointer to an array of user strings.
+ * @tok: Pointer to a PATH token.
+ *
+ * Return: Returns a pointer to the concatenated string stored in 'tmp'.
+ */
+char *_concat(char *tmp, char **samshell_args, char *tok)
+{
+	int len = 0;
+
+	/*Initialize the static array to store the concatenated string*/
+	_memset(tmp, 0, 256);
+	/*Calculate the length of concatenated string*/
+	len = _strlen(tok) + _strlen(samshell_args[0]) + 2;
+	/*Concatenate the PATH token, '/', and the user string*/
+	_strcat(tmp, tok);
+	_strcat(tmp, "/");
+	_strcat(tmp, samshell_args[0]);
+	/*Ensure null-termination of the concatenated string*/
+	tmp[len - 1] = '\0';
+	/*Return a pointer to the concatenated string stored in 'tmp'*/
+	return (tmp);
+}
