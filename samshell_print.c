@@ -14,6 +14,7 @@ int samshell_env(void)
 {
 	int i;
 
+	/*Iterate through environmental variables*/
 	for (i = 0; environ[i]; i++)
 	{
 		_puts(environ[i]);
@@ -61,14 +62,18 @@ char *_getenv(const char *name)
 	int i;
 	int result;
 
+	/*Iterate through the environment variables*/
 	for (i = 0; environ[i]; i++)
 	{
+		/*Compare the names using a custom comparison function*/
 		result = _S_PATHstrcmp(name, environ[i]);
+		/*If a match is found return the corresponding environment variable*/
 		if (result == 0)
 		{
 			return (environ[i]);
 		}
 	}
+	/*Return Null if no match is found*/
 	return (NULL);
 }
 
@@ -85,9 +90,17 @@ char *_memset(char *s, char b, unsigned int n)
 {
 	unsigned int i;
 
+	/*Check for NULL pointer*/
+	if (s == NULL)
+	{
+		return (NULL);
+	}
+
+	/*Fill the memory area with the specified byte value*/
 	for (i = 0; i < n; i++)
 	{
 		s[i] = b;
 	}
+	/*Return a pointer to the filled memory area*/
 	return (s);
 }

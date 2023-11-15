@@ -16,8 +16,10 @@
 #include <errno.h>
 #include <fcntl.h>
 
+/*Declare an external variable for the shell environment*/
 extern char **environ;
 
+/*Function related to the PATH variable an shell ececution*/
 int samshell_prompt(void);
 char *_read(void);
 int checkbuiltins(char **samshell_args, char *s_buffer, int exitstatus);
