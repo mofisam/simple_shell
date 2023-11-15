@@ -12,10 +12,11 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
+#include <signal.h>
 #include <errno.h>
 #include <fcntl.h>
 
-extern char **samshell_env;
+extern char **environ;
 
 int samshell_prompt(void);
 char *_read(void);
@@ -30,9 +31,14 @@ int _strcmp(const char *s1, const char *s2);
 int _strlen(char *s);
 
 char *_getenv(const char *name);
-int _env(void);
+int samshell_env(void);
 void _puts(char *s_str);
 char *_memset(char *s, char b, unsigned int n);
 int _putchar(char c);
+
+int _samshell_splitPATH(char *s_str);
+char **tokenize(char *s_buffer);
+int _S_PATHstrcmp(const char *s1, const char *s2);
+char *_concat(char *tmp, char **samshell_args, char *tok);
 
 #endif

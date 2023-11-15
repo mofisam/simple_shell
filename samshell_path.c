@@ -37,7 +37,7 @@ char *_samshell_fullpath(char **samshell_args, char *PATH, char *copy)
 		{
 			toklen = _strlen(tok);
 			/*Check if d user command is a valid executable in CD*/
-			if (tok[token + 1] == ':')
+			if (tok[toklen + 1] == ':')
 			{
 				if (stat(samshell_args[0], &h) == 0)
 				{

@@ -72,7 +72,7 @@ int checkbuiltins(char **samshell_args, char *s_buffer, int exitstatus)
 	if (_strcmp(samshell_args[0], "env") == 0)
 	{
 		/*Call the _env function to print the environment*/
-		_env();
+		samshell_env();
 
 		/*Free allocated memory for arguments, buffer, and return 1*/
 		for (i = 0; samshell_args[i]; i++)
@@ -118,53 +118,40 @@ int _forkprocess(char **samshell_args, char *s_buffer, char *samshell_filename)
 	int i, result, status, exitstatus = 0;
 	pid_t pid;
 
-	/*Create a child process using fork*/
-	pid = fork();
+	pid = fork();  /*Create a child process using fork*/
 	if (pid == -1)
 	{
-		/*Handle error if fork fails*/
-		perror("Error");
+		perror("Error"); /*Handle error if fork fails*/
 		exit(1);
 	}
-
 	/*Code executed by the child process*/
 	if (pid == 0)
 	{
 		/*Execute the command using execve*/
-		result = execve(samshell_filename, samshell_args, samshell_env);
+		result = execve(samshell_filename, samshell_args, environ);
 		/*Handle error if execve fails*/
 		if  (result == -1)
 		{
 			perror(samshell_args[0]);
-
 			/*Free allocated memory for arguments, buffer, and*/
 			/*exit with an error status*/
 			for (i = 0; samshell_args[i]; i++)
-			{
 				free(samshell_args[i]);
-			}
 			free(samshell_args);
 			free(s_buffer);
 			exit(127);
 		}
 	}
-
 	/*Parent process waits for the child to complete*/
 	wait(&status);
-
 	/* Check if the child process terminated normally and*/
 	/*get its exit status*/
 	if (WIFEXITED(status))
-	{
 		exitstatus = WEXITSTATUS(status);
-	}
-
 	/*Free allocated memory for arguments, buffer, and*/
 	/*return the exit status*/
 	for (i = 0; samshell_args[i]; i++)
-	{
 		free(samshell_args[i]);
-	}
 	free(samshell_args);
 	free(s_buffer);
 	return (exitstatus);

@@ -40,7 +40,7 @@ int main(void)
 				continue;
 			}
 			/*find the full path of the executable*/
-			samshell_filename = _samshell_fullpath(samshell_args, PATH, COPY);
+			samshell_filename = _samshell_fullpath(samshell_args, PATH, copy);
 			/*Check for and execute built-in commands*/
 			if (checkbuiltins(samshell_args, s_buffer, exitstatus) != 0)
 				continue;

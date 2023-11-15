@@ -1,7 +1,7 @@
 #include "samshell_header.h"
 
 /**
- * _env - Display SamShell Environment Variables
+ * samshell_env - Display SamShell Environment Variables
  *
  * This function is responsible for displaying the current set of
  * environment variables in the SamShell program. It iterates through
@@ -10,13 +10,13 @@
  *
  * Return: Always returns 0 on success.
  */
-int _env(void)
+int samshell__env(void)
 {
 	int i;
 
-	for (i = 0; samshell_env[i]; i++)
+	for (i = 0; environ[i]; i++)
 	{
-		_puts(samshell_env[i]);
+		_puts(environ[i]);
 	}
 	return (0);
 }
@@ -61,12 +61,12 @@ char *_getenv(const char *name)
 	int i;
 	int result;
 
-	for (i = 0; samshell_env[i]; i++)
+	for (i = 0; environ[i]; i++)
 	{
-		result = _S_PATHstrcmp(name, samshell_env[i]);
+		result = _S_PATHstrcmp(name, environ[i]);
 		if (result == 0)
 		{
-			return (samshell_env[i]);
+			return (environ[i]);
 		}
 	}
 	return (NULL);
