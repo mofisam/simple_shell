@@ -10,7 +10,7 @@
  *
  * Return: Always returns 0 on success.
  */
-int samshell__env(void)
+int samshell_env(void)
 {
 	int i;
 
